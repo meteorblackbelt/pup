@@ -26,8 +26,9 @@ Meteor.methods({
     });
 
     try {
+      const { _id } = doc;
       documentTools.update(doc);
-      return doc._id; // Return _id so we can redirect to document after update.
+      return _id; // Return _id so we can redirect to document after update.
     } catch (exception) {
       handleMethodException(exception);
     }

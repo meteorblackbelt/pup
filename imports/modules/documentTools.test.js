@@ -39,3 +39,24 @@ describe('Test the operations performed by the documentTools.remove function:', 
     expect(Documents.find().fetch().length).to.equal(2);
   });
 });
+
+
+describe('Test the operations performed by the documentTools.update function:', function () {
+  let documentIds;
+  beforeEach(function () {
+    Documents.remove({});
+    const fido = documentTools.insert({ owner: 'fido', doc: sampleDoc });
+    documentIds = {
+      fido,
+    };
+  });
+
+  it('When update is called, that record is updated', function () {
+    const updatedDoc = {
+      _id: documentIds.fido,
+      title: 'Paws for thought',
+    };
+    documentTools.update(updatedDoc);
+    expect(Documents.findOne({ _id: documentIds.fido }).title).to.equal('Paws for thought');
+  });
+});
