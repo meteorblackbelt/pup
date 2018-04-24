@@ -1,16 +1,50 @@
 import React from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Nav, NavItem } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
+import {
+    Drawer,
+    DrawerHeader,
+    DrawerContent
+} from 'rmwc/Drawer';
+import {
+    List,
+    ListItem,
+    ListItemText
+} from 'rmwc/List';
 
-const PublicNavigation = () => (
-  <Nav pullRight>
-    <LinkContainer to="/signup">
-      <NavItem eventKey={1} href="/signup">Sign Up</NavItem>
-    </LinkContainer>
-    <LinkContainer to="/login">
-      <NavItem eventKey={2} href="/login">Log In</NavItem>
-    </LinkContainer>
-  </Nav>
-);
+class PublicNavigation extends React.Component {
+  constructor(props) {
+    super(props);
 
-export default PublicNavigation;
+    this.state = {
+      menuOpen: this.props.menuOpen,
+    }
+  }
+
+  navigate(path) {
+    this.props.onClose();
+    this.props.history.push(path);
+  }
+
+  render() {
+    return (
+      <Drawer
+        temporary
+        open={this.props.menuOpen}
+        onClose={this.props.onClose}
+      >
+        <DrawerContent>
+          <List>
+            <ListItem onClick={() => this.navigate('/signup')}>
+              <ListItemText>Sign Up</ListItemText>
+            </ListItem>
+            <ListItem onClick={() => this.navigate('/login')}>
+              <ListItemText>Log In</ListItemText>
+            </ListItem>
+          </List>
+        </DrawerContent>
+      </Drawer>
+    )
+  }
+}
+
+export default withRouter(PublicNavigation);

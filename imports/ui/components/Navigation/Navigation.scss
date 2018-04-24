@@ -1,6 +1,21 @@
-.navbar {
-  border-radius: 0;
-  border-left: none;
-  border-right: none;
-  border-top: none;
+:root {
+  .mdc-toolbar {
+    &, & .mdc-toolbar__icon {
+      color: var(--mdc-text-primary-on-background, #333);
+    }
+
+    .mdc-toolbar__section--align-start {
+      flex-grow: 10;
+    }
+
+    .mdc-toolbar__title {
+      flex: 1;
+      text-align: center;
+
+      a {
+        color: var(--mdc-text-primary-on-background, #333);
+        text-decoration: none;
+      }
+    }
+  }
 }

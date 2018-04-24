@@ -2,26 +2,49 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import {
+    Drawer,
+    DrawerHeader,
+    DrawerContent
+} from 'rmwc/Drawer';
+import {
+    List,
+    ListItem,
+    ListItemText
+} from 'rmwc/List';
 
-const AuthenticatedNavigation = ({ name, history }) => (
-  <div>
-    <Nav>
-      <LinkContainer to="/documents">
-        <NavItem eventKey={1} href="/documents">Documents</NavItem>
-      </LinkContainer>
-    </Nav>
-    <Nav pullRight>
-      <NavDropdown eventKey={2} title={name} id="user-nav-dropdown">
-        <LinkContainer to="/profile">
-          <NavItem eventKey={2.1} href="/profile">Profile</NavItem>
-        </LinkContainer>
-        <MenuItem divider />
-        <MenuItem eventKey={2.2} onClick={() => history.push('/logout')}>Logout</MenuItem>
-      </NavDropdown>
-    </Nav>
-  </div>
-);
+class AuthenticatedNavigation extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuOpen: false,
+    }
+  }
+
+  navigate(path) {
+    this.props.onClose();
+    this.props.history.push(path);
+  }
+
+  render() {
+    return (
+      <Drawer
+        temporary
+        open={this.props.menuOpen}
+        onClose={this.props.onClose}
+      >
+        <DrawerContent>
+          <List>
+            <ListItem onClick={() => this.navigate('/documents')}>
+              <ListItemText>Documents</ListItemText>
+            </ListItem>
+          </List>
+        </DrawerContent>
+      </Drawer>
+    )
+  }
+}
 
 AuthenticatedNavigation.propTypes = {
   name: PropTypes.string.isRequired,
