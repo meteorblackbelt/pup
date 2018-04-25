@@ -32,9 +32,10 @@ class Navigation extends React.Component {
     }
   }
 
-  closeDrawer() {
+  closeMenus() {
     this.setState({
       drawerOpen: false,
+      menuOpen: false,
     })
   }
 
@@ -70,7 +71,7 @@ class Navigation extends React.Component {
             )}
           </ToolbarSection>
         </ToolbarRow>
-        {!this.props.authenticated ? <PublicNavigation drawerOpen={this.state.drawerOpen} onClose={this.closeDrawer.bind(this)} /> : <AuthenticatedNavigation drawerOpen={this.state.drawerOpen} onClose={this.closeDrawer.bind(this)} {...this.props} />}
+        {!this.props.authenticated ? <PublicNavigation drawerOpen={this.state.drawerOpen} onClose={this.closeMenus.bind(this)} /> : <AuthenticatedNavigation drawerOpen={this.state.drawerOpen} onClose={this.closeMenus.bind(this)} {...this.props} />}
       </Toolbar>
       <ToolbarFixedAdjust />
       </div>

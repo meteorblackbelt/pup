@@ -10,12 +10,6 @@
   }
 }
 
-form {
-  & > * {
-    margin: 0.5em 0;
-  }
-}
-
 .mdc-card {
   &.Alert {
     padding: 1em;
@@ -25,4 +19,12 @@ form {
 
 .mdc-text-field--textarea .mdc-floating-label {
   background: transparent;
+}
+
+form {
+  [class^='mdc-'], & > [class*=' mdc-'] {
+    &:not(.upgrade-specificity) {
+      margin: 0.5em 0;
+    }
+  }
 }

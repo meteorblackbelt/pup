@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
 import FileSaver from 'file-saver';
 import base64ToBlob from 'b64-to-blob';
-import { Row, Col, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import _ from 'lodash';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
@@ -14,6 +13,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import InputHint from '../../components/InputHint/InputHint';
 import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
 import validate from '../../../modules/validate';
+import { Button, ButtonIcon } from 'rmwc/Button';
+import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
+import { Grid, GridInner, GridCell } from 'rmwc/Grid';
 
 import './Profile.scss';
 
@@ -154,63 +156,31 @@ class Profile extends React.Component {
             </Button>
           </div>
         ))}
-      </div>) : <div />;
+      </div>
+    ) : <div />;
   }
 
   renderPasswordUser(loading, user) {
     return !loading ? (
-      <div>
-        <Row>
-          <Col xs={6}>
-            <FormGroup>
-              <ControlLabel>First Name</ControlLabel>
-              <input
-                type="text"
-                name="firstName"
-                defaultValue={user.profile.name.first}
-                className="form-control"
-              />
-            </FormGroup>
-          </Col>
-          <Col xs={6}>
-            <FormGroup>
-              <ControlLabel>Last Name</ControlLabel>
-              <input
-                type="text"
-                name="lastName"
-                defaultValue={user.profile.name.last}
-                className="form-control"
-              />
-            </FormGroup>
-          </Col>
-        </Row>
-        <FormGroup>
-          <ControlLabel>Email Address</ControlLabel>
-          <input
-            type="email"
-            name="emailAddress"
-            defaultValue={user.emails[0].address}
-            className="form-control"
-          />
-        </FormGroup>
-        <FormGroup>
-          <ControlLabel>Current Password</ControlLabel>
-          <input
-            type="password"
-            name="currentPassword"
-            className="form-control"
-          />
-        </FormGroup>
-        <FormGroup>
-          <ControlLabel>New Password</ControlLabel>
-          <input
-            type="password"
-            name="newPassword"
-            className="form-control"
-          />
-          <InputHint>Use at least six characters.</InputHint>
-        </FormGroup>
-        <Button type="submit" bsStyle="success">Save Profile</Button>
+      <div className="EmailProfile">
+        <GridInner>
+          <GridCell phone="2" tablet="4" desktop="6">
+            <TextField name="firstName" fullwidth label="First Name" defaultValue={user.profile.name.first} />
+          </GridCell>
+
+          <GridCell phone="2" tablet="4" desktop="6">
+            <TextField name="lastName" fullwidth label="Last Name" defaultValue={user.profile.name.last} />
+          </GridCell>
+        </GridInner>
+
+        <TextField name="emailAddress" fullwidth label="Email Address" defaultValue={user.emails[0].address} />
+
+        <TextField name="currentPassword" type="password" fullwidth label="Current Password" />
+        <TextFieldHelperText>Use at least six characters.</TextFieldHelperText>
+
+        <TextField name="newPassword" type="password" fullwidth label="New Password" />
+
+        <Button raised type="submit">Save Profile</Button>
       </div>
     ) : <div />;
   }
@@ -225,22 +195,20 @@ class Profile extends React.Component {
   render() {
     const { loading, user } = this.props;
     return (
-      <div className="Profile">
-        <Row>
-          <Col xs={12} sm={6} md={4}>
-            <h4 className="page-header">Edit Profile</h4>
-            <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-              {this.renderProfileForm(loading, user)}
-            </form>
-            <AccountPageFooter>
-              <p><a href="#" onClick={this.handleExportData}>Export my data</a> – Download all of your documents as .txt files in a .zip</p>
-            </AccountPageFooter>
-            <AccountPageFooter>
-              <Button bsStyle="danger" onClick={this.handleDeleteAccount}>Delete My Account</Button>
-            </AccountPageFooter>
-          </Col>
-        </Row>
-      </div>
+      <Grid className="Profile">
+        <GridCell span="6">
+          <h4 className="page-header">Edit Profile</h4>
+          <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
+            {this.renderProfileForm(loading, user)}
+          </form>
+          <AccountPageFooter>
+            <p><a href="#" onClick={this.handleExportData}>Export my data</a> – Download all of your documents as .txt files in a .zip</p>
+          </AccountPageFooter>
+          <AccountPageFooter>
+            <Button raised className="btn danger" onClick={this.handleDeleteAccount}>Delete My Account</Button>
+          </AccountPageFooter>
+        </GridCell>
+      </Grid>
     );
   }
 }
