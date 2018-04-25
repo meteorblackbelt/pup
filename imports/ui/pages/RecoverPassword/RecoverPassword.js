@@ -11,8 +11,6 @@ import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
 import { Grid, GridCell } from 'rmwc/Grid';
 import { Card } from 'rmwc/Card';
 
-import './RecoverPassword.scss';
-
 class RecoverPassword extends React.Component {
   constructor(props) {
     super(props);

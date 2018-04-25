@@ -9,3 +9,20 @@
     margin-top: 20px;
   }
 }
+
+form {
+  & > * {
+    margin: 0.5em 0;
+  }
+}
+
+.mdc-card {
+  &.Alert {
+    padding: 1em;
+    background-color: #d9edf7;
+  }
+}
+
+.mdc-text-field--textarea .mdc-floating-label {
+  background: transparent;
+}

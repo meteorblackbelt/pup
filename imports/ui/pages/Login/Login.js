@@ -10,8 +10,6 @@ import { Button, ButtonIcon } from 'rmwc/Button';
 import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
 import { Grid, GridCell } from 'rmwc/Grid';
 
-import './Login.scss';
-
 class Login extends React.Component {
   constructor(props) {
     super(props);

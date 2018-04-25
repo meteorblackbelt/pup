@@ -9,8 +9,6 @@ import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
 import { Grid, GridCell } from 'rmwc/Grid';
 import { Card } from 'rmwc/Card';
 
-import './ResetPassword.scss';
-
 class ResetPassword extends React.Component {
   constructor(props) {
     super(props);
