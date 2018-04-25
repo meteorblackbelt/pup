@@ -1,10 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
-import { Row, Col, Alert, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import { Accounts } from 'meteor/accounts-base';
 import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
+import { Button, ButtonIcon } from 'rmwc/Button';
+import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
+import { Grid, GridCell } from 'rmwc/Grid';
+import { Card } from 'rmwc/Card';
+
+import './ResetPassword.scss';
 
 class ResetPassword extends React.Component {
   constructor(props) {
@@ -56,38 +61,21 @@ class ResetPassword extends React.Component {
 
   render() {
     return (
-      <div className="ResetPassword">
-        <Row>
-          <Col xs={12} sm={6} md={4}>
-            <h4 className="page-header">Reset Password</h4>
-            <Alert bsStyle="info">
-              To reset your password, enter a new one below. You will be logged in
-  with your new password.
-            </Alert>
-            <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-              <FormGroup>
-                <ControlLabel>New Password</ControlLabel>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="newPassword"
-                  placeholder="New Password"
-                />
-              </FormGroup>
-              <FormGroup>
-                <ControlLabel>Repeat New Password</ControlLabel>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="repeatNewPassword"
-                  placeholder="Repeat New Password"
-                />
-              </FormGroup>
-              <Button type="submit" bsStyle="success">Reset Password &amp; Login</Button>
-            </form>
-          </Col>
-        </Row>
-      </div>
+      <Grid className="ResetPassword">
+        <GridCell span="6">
+          <h4 className="page-header">Reset Password</h4>
+          <Card className="Alert">
+            To reset your password, enter a new one below. You will be logged in with your new password.
+          </Card>
+          <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
+            <TextField type="password" name="newPassword" fullwidth label="New Password" />
+
+            <TextField type="password" name="repeatNewPassword" fullwidth label="Repeat New Password" />
+
+            <Button raised type="submit">Reset Password &amp; Login</Button>
+          </form>
+        </GridCell>
+      </Grid>
     );
   }
 }
