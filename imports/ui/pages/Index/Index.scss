@@ -2,77 +2,60 @@
 @import '../../stylesheets/colors';
 
 :root {
-	.Index {
-		padding: 20px;
-		background-color: $cb-blue;
-		text-align: center;
-		border-radius: 3px;
-		color: #fff;
+  .Index {
+    padding: 20px;
+    background-color: $cb-blue;
+    text-align: center;
+    border-radius: 3px;
+    color: #fff;
 
-		img {
-			width: 100px;
-			height: auto;
-			margin: 0 auto;
-		}
+    div.horizontal-buttons {
+      display: flex;
+      justify-content: space-around;
+    }
 
-		h1 {
-			font-size: 28px;
-		}
+    img {
+      width: 100px;
+      height: auto;
+      margin: 0 auto;
+    }
 
-		p {
-			font-size: 18px;
-			color: lighten($cb-blue, 25%);
-		}
+    footer {
+      margin: 20px -20px -20px;
+      border-top: 1px solid darken($cb-blue, 10%);
+      padding: 20px;
 
-		> div {
-			display: inline-block;
-			margin: 10px 0 0;
+      p {
+        font-size: 14px;
+        line-height: 22px;
+        color: lighten($cb-blue, 35%);
+        margin: 0;
+      }
 
-			.btn:first-child {
-				margin-right: 10px;
-			}
+      p a {
+        color: lighten($cb-blue, 35%);
+        text-decoration: underline;
+      }
+    }
+  }
 
-			.btn {
-				border: none;
-			}
-		}
+  @include breakpoint(tablet) {
+    .Index {
+      padding: 30px;
 
-		footer {
-			margin: 20px -20px -20px;
-			border-top: 1px solid darken($cb-blue, 10%);
-			padding: 20px;
+      footer {
+        margin: 30px -30px -30px;
+      }
+    }
+  }
 
-			p {
-				font-size: 14px;
-				line-height: 22px;
-				color: lighten($cb-blue, 35%);
-				margin: 0;
-			}
+  @include breakpoint(desktop) {
+    .Index {
+      padding: 40px;
 
-			p a {
-				color: lighten($cb-blue, 35%);
-				text-decoration: underline;
-			}
-		}
-	}
-
-	@include breakpoint(tablet) {
-		.Index {
-			padding: 30px;
-
-			footer {
-				margin: 30px -30px -30px;
-			}
-		}
-	}
-
-	@include breakpoint(desktop) {
-		.Index {
-			padding: 40px;
-
-			footer {
-				margin: 40px -40px -40px;
-			}
-		}
-	}
+      footer {
+        margin: 40px -40px -40px;
+      }
+    }
+  }
 }

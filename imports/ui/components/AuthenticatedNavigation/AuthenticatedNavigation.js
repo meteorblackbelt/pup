@@ -18,7 +18,7 @@ class AuthenticatedNavigation extends React.Component {
     super(props);
 
     this.state = {
-      menuOpen: false,
+      drawerOpen: false,
     }
   }
 
@@ -31,7 +31,7 @@ class AuthenticatedNavigation extends React.Component {
     return (
       <Drawer
         temporary
-        open={this.props.menuOpen}
+        open={this.props.drawerOpen}
         onClose={this.props.onClose}
       >
         <DrawerContent>

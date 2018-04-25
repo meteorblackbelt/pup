@@ -16,7 +16,7 @@ class PublicNavigation extends React.Component {
     super(props);
 
     this.state = {
-      menuOpen: this.props.menuOpen,
+      drawerOpen: this.props.drawerOpen,
     }
   }
 
@@ -29,7 +29,7 @@ class PublicNavigation extends React.Component {
     return (
       <Drawer
         temporary
-        open={this.props.menuOpen}
+        open={this.props.drawerOpen}
         onClose={this.props.onClose}
       >
         <DrawerContent>
