@@ -1,6 +1,6 @@
 import React from 'react';
 import autoBind from 'react-autobind';
-import { Row, Col, FormGroup, ControlLabel, Button } from 'react-bootstrap';
+import { Row, Col, FormGroup, ControlLabel } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
@@ -10,6 +10,11 @@ import OAuthLoginButtons from '../../components/OAuthLoginButtons/OAuthLoginButt
 import InputHint from '../../components/InputHint/InputHint';
 import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
 import validate from '../../../modules/validate';
+import { Button, ButtonIcon } from 'rmwc/Button';
+import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
+import { Grid, GridInner, GridCell } from 'rmwc/Grid';
+
+import './Signup.scss';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -82,69 +87,40 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <div className="Signup">
-        <Row>
-          <Col xs={12} sm={6} md={5} lg={4}>
-            <h4 className="page-header">Sign Up</h4>
-            <Row>
-              <Col xs={12}>
-                <OAuthLoginButtons
-                  services={['facebook', 'github', 'google']}
-                  emailMessage={{
-                    offset: 97,
-                    text: 'Sign Up with an Email Address',
-                  }}
-                />
-              </Col>
-            </Row>
+      <Grid className="Signup">
+        <GridCell span="6">
+          <h4 className="page-header">Sign Up</h4>
+          <OAuthLoginButtons
+            services={['facebook', 'github', 'google']}
+            emailMessage={{
+              offset: 97,
+              text: 'Sign Up with an Email Address',
+            }}
+          />
             <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-              <Row>
-                <Col xs={6}>
-                  <FormGroup>
-                    <ControlLabel>First Name</ControlLabel>
-                    <input
-                      type="text"
-                      name="firstName"
-                      className="form-control"
-                    />
-                  </FormGroup>
-                </Col>
-                <Col xs={6}>
-                  <FormGroup>
-                    <ControlLabel>Last Name</ControlLabel>
-                    <input
-                      type="text"
-                      name="lastName"
-                      className="form-control"
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
-              <FormGroup>
-                <ControlLabel>Email Address</ControlLabel>
-                <input
-                  type="email"
-                  name="emailAddress"
-                  className="form-control"
-                />
-              </FormGroup>
-              <FormGroup>
-                <ControlLabel>Password</ControlLabel>
-                <input
-                  type="password"
-                  name="password"
-                  className="form-control"
-                />
-                <InputHint>Use at least six characters.</InputHint>
-              </FormGroup>
-              <Button type="submit" bsStyle="success">Sign Up</Button>
-              <AccountPageFooter>
-                <p>Already have an account? <Link to="/login">Log In</Link>.</p>
-              </AccountPageFooter>
+              <GridInner>
+                <GridCell phone="2" tablet="4" desktop="6">
+                  <TextField name="firstName" fullwidth label="First Name" />
+                </GridCell>
+
+                <GridCell phone="2" tablet="4" desktop="6">
+                  <TextField name="lastName" fullwidth label="Last Name" />
+                </GridCell>
+              </GridInner>
+
+              <TextField name="emailAddress" fullwidth label="Email Address" />
+
+              <TextField name="password" type="password" fullwidth label="Password" />
+              <TextFieldHelperText>Use at least six characters.</TextFieldHelperText>
+
+              <Button raised type="submit">Sign Up</Button>
             </form>
-          </Col>
-        </Row>
-      </div>
+
+            <AccountPageFooter>
+              <p>Already have an account? <Link to="/login">Log In</Link>.</p>
+            </AccountPageFooter>
+        </GridCell>
+      </Grid>
     );
   }
 }
