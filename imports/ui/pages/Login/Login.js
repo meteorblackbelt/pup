@@ -1,12 +1,16 @@
 import React from 'react';
 import autoBind from 'react-autobind';
-import { Row, Col, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import OAuthLoginButtons from '../../components/OAuthLoginButtons/OAuthLoginButtons';
 import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
 import validate from '../../../modules/validate';
+import { Button, ButtonIcon } from 'rmwc/Button';
+import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
+import { Grid, GridCell } from 'rmwc/Grid';
+
+import './Login.scss';
 
 class Login extends React.Component {
   constructor(props) {
@@ -52,49 +56,31 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="Login">
-        <Row>
-          <Col xs={12} sm={6} md={5} lg={4}>
+      <Grid className="Login">
+        <GridCell span="6">
             <h4 className="page-header">Log In</h4>
-            <Row>
-              <Col xs={12}>
-                <OAuthLoginButtons
-                  services={['facebook', 'github', 'google']}
-                  emailMessage={{
-                    offset: 100,
-                    text: 'Log In with an Email Address',
-                  }}
-                />
-              </Col>
-            </Row>
+            <OAuthLoginButtons
+              services={['facebook', 'github', 'google']}
+              emailMessage={{
+                offset: 100,
+                text: 'Log In with an Email Address',
+              }}
+            />
             <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-              <FormGroup>
-                <ControlLabel>Email Address</ControlLabel>
-                <input
-                  type="email"
-                  name="emailAddress"
-                  className="form-control"
-                />
-              </FormGroup>
-              <FormGroup>
-                <ControlLabel className="clearfix">
-                  <span className="pull-left">Password</span>
-                  <Link className="pull-right" to="/recover-password">Forgot password?</Link>
-                </ControlLabel>
-                <input
-                  type="password"
-                  name="password"
-                  className="form-control"
-                />
-              </FormGroup>
-              <Button type="submit" bsStyle="success">Log In</Button>
-              <AccountPageFooter>
-                <p>{'Don\'t have an account?'} <Link to="/signup">Sign Up</Link>.</p>
-              </AccountPageFooter>
+              <TextField name="emailAddress" fullwidth label="Email Address" />
+
+              <TextField name="password" type="password" fullwidth label="Password" />
+              <TextFieldHelperText>At least six characters.</TextFieldHelperText>
+
+              <Link className="pull-right" to="/recover-password">Forgot password?</Link>
+              <Button raised>Log In</Button>
             </form>
-          </Col>
-        </Row>
-      </div>
+
+            <AccountPageFooter>
+              <p>{'Don\'t have an account?'} <Link to="/signup">Sign Up</Link>.</p>
+            </AccountPageFooter>
+        </GridCell>
+      </Grid>
     );
   }
 }

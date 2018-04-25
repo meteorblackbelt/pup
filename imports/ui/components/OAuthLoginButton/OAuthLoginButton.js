@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import Icon from '../Icon/Icon';
+import { Button, ButtonIcon } from 'rmwc/Button';
 
 import './OAuthLoginButton.scss';
 
@@ -37,13 +38,13 @@ const serviceLabel = {
 };
 
 const OAuthLoginButton = ({ service, callback }) => (
-  <button
+  <Button
+    raised
     className={`OAuthLoginButton OAuthLoginButton-${service}`}
-    type="button"
     onClick={() => handleLogin(service, callback)}
   >
     {serviceLabel[service]}
-  </button>
+  </Button>
 );
 
 OAuthLoginButton.defaultProps = {

@@ -11,7 +11,8 @@ import {
   ToolbarSection,
   ToolbarTitle,
   ToolbarMenuIcon,
-  ToolbarIcon
+  ToolbarIcon,
+  ToolbarFixedAdjust
 } from 'rmwc/Toolbar';
 import {
   Menu,
@@ -39,7 +40,8 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <Toolbar>
+      <div>
+      <Toolbar fixed>
         <ToolbarRow>
           <ToolbarSection alignStart>
             <ToolbarMenuIcon use="menu"
@@ -49,8 +51,8 @@ class Navigation extends React.Component {
               <Link to="/">Pup</Link>
             </ToolbarTitle>
           </ToolbarSection>
-          {this.props.authenticated && (
-            <ToolbarSection alignEnd>
+          <ToolbarSection alignEnd>
+            {this.props.authenticated && (
               <MenuAnchor>
                 <ToolbarMenuIcon use="more_vert"
                   onClick={() => this.setState({menuOpen: !this.state.menuOpen}) }
@@ -65,12 +67,13 @@ class Navigation extends React.Component {
                   <MenuItem onClick={() => this.props.history.push('/logout')}>Logout</MenuItem>
                 </Menu>
               </MenuAnchor>
-
-            </ToolbarSection>
-          )}
+            )}
+          </ToolbarSection>
         </ToolbarRow>
         {!this.props.authenticated ? <PublicNavigation drawerOpen={this.state.drawerOpen} onClose={this.closeDrawer.bind(this)} /> : <AuthenticatedNavigation drawerOpen={this.state.drawerOpen} onClose={this.closeDrawer.bind(this)} {...this.props} />}
       </Toolbar>
+      <ToolbarFixedAdjust />
+      </div>
     )
   }
 }

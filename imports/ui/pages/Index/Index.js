@@ -24,8 +24,8 @@ const Index = ({name, history}) => (
     <h1>Pup</h1>
     <p>A boilerplate for products.</p>
     <div className="horizontal-buttons">
-        <Button onClick={() => window.open("http://cleverbeagle.com/pup", "_blank")} raised theme="secondary-bg text-secondary-on-background">Read the Docs</Button>
-        <Button onClick={() => window.open("https://github.com/meteorblackbelt/pup", "_blank")} raised theme="secondary-bg text-secondary-on-background"><ButtonIcon>star</ButtonIcon> Star on GitHub</Button>
+      <Button theme="secondary-bg text-secondary-on-background" onClick={() => window.open("http://cleverbeagle.com/pup", "_blank")} raised>Read the Docs</Button>
+      <Button theme="secondary-bg text-secondary-on-background" onClick={() => window.open("https://github.com/meteorblackbelt/pup", "_blank")} raised><ButtonIcon>star</ButtonIcon> Star on GitHub</Button>
     </div>
     <footer>
       <p>Need help and want to stay accountable building your product? <a href="https://cleverbeagle.com?utm_source=pupappindex&utm_medium=app&utm_campaign=oss">Check out Clever Beagle</a>.</p>
