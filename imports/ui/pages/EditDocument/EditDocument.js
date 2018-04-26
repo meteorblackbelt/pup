@@ -6,12 +6,18 @@ import Documents from '../../../api/Documents/Documents';
 import DocumentEditor from '../../components/DocumentEditor/DocumentEditor';
 import NotFound from '../NotFound/NotFound';
 
-const EditDocument = ({ doc, history }) => (doc ? (
-  <div className="EditDocument">
-    <h4 className="page-header">{`Editing "${doc.title}"`}</h4>
-    <DocumentEditor doc={doc} history={history} />
-  </div>
-) : <NotFound />);
+class EditDocument extends React.Component {
+  render() {
+    let { doc, history } = this.props;
+
+    return (doc ? (
+      <div className="EditDocument">
+        <h4 className="page-header">{`Editing "${doc.title}"`}</h4>
+        <DocumentEditor doc={doc} history={history} onAlert={this.props.onAlert} />
+      </div>
+    ) : <NotFound />);
+  }
+}
 
 EditDocument.defaultProps = {
   doc: null,

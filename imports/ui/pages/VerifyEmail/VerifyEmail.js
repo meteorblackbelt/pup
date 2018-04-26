@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Alert from '../../components/Alert/Alert';
 import { Accounts } from 'meteor/accounts-base';
-import { Bert } from 'meteor/themeteorchef:bert';
 
 class VerifyEmail extends React.Component {
   constructor(props) {
@@ -14,11 +13,11 @@ class VerifyEmail extends React.Component {
     const { match, history } = this.props;
     Accounts.verifyEmail(match.params.token, (error) => {
       if (error) {
-        Bert.alert(error.reason, 'danger');
+        this.props.onAlert(error.reason, 'danger');
         this.setState({ error: `${error.reason}. Please try again.` });
       } else {
         setTimeout(() => {
-          Bert.alert('All set, thanks!', 'success');
+          this.props.onAlert('All set, thanks!', 'success');
           history.push('/documents');
         }, 1500);
       }

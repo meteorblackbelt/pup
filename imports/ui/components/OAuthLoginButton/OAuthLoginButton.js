@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Bert } from 'meteor/themeteorchef:bert';
 import Icon from '../Icon/Icon';
 import { Button, ButtonIcon } from 'rmwc/Button';
 
@@ -49,7 +48,7 @@ const OAuthLoginButton = ({ service, callback }) => (
 
 OAuthLoginButton.defaultProps = {
   callback: (error) => {
-    if (error) Bert.alert(error.message, 'danger');
+    if (error) this.props.onAlert(error.message, 'danger');
   },
 };
 

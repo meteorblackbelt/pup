@@ -11,6 +11,7 @@ import { RMWCProvider } from 'rmwc/Provider';
 import Navigation from '../../components/Navigation/Navigation';
 import Authenticated from '../../components/Authenticated/Authenticated';
 import Public from '../../components/Public/Public';
+import Unauthenticated from '../../components/Unauthenticated/Unauthenticated';
 import Index from '../../pages/Index/Index';
 import Documents from '../../pages/Documents/Documents';
 import NewDocument from '../../pages/NewDocument/NewDocument';
@@ -30,6 +31,7 @@ import Privacy from '../../pages/Privacy/Privacy';
 import ExamplePage from '../../pages/ExamplePage/ExamplePage';
 import VerifyEmailAlert from '../../components/VerifyEmailAlert/VerifyEmailAlert';
 import getUserName from '../../../modules/get-user-name';
+import { Snackbar } from 'rmwc/Snackbar';
 
 import './App.scss';
 import 'material-components-web/dist/material-components-web.min.css';
@@ -46,20 +48,39 @@ class App extends React.Component {
     this.setState({ afterLoginPath });
   }
 
+  onAlert(alert, className) {
+    this.setState({
+      alert: alert
+    })
+  }
+
   render() {
-    const { props, state, setAfterLoginPath } = this;
+    const { state, setAfterLoginPath } = this;
+    const props = {
+      onAlert: this.onAlert.bind(this),
+      ...(this.props || {})
+    }
+
     return (
 			<RMWCProvider iconStrategy="ligature">
 				<Router>
 					{!props.loading ? (
 						<div className="App">
+              <Snackbar
+                show={this.state.alert}
+                onHide={evt => this.setState({alert: null})}
+                message={this.state.alert}
+              />
+
 							<Navigation {...props} {...state} />
+
               <main>
                 {props.authenticated ?
                   <VerifyEmailAlert
                     userId={props.userId}
                     emailVerified={props.emailVerified}
                     emailAddress={props.emailAddress}
+                    onAlert={this.onAlert}
                   />
                   : ''}
                 <Switch>
@@ -69,16 +90,16 @@ class App extends React.Component {
                   <Authenticated exact path="/documents/:_id" component={ViewDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
                   <Authenticated exact path="/documents/:_id/edit" component={EditDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
                   <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-                  <Public path="/signup" component={Signup} {...props} {...state} />
-                  <Public path="/login" component={Login} {...props} {...state} />
+                  <Unauthenticated path="/signup" component={Signup} {...props} {...state} />
+                  <Unauthenticated path="/login" component={Login} {...props} {...state} />
                   <Route path="/logout" render={routeProps => <Logout {...routeProps} setAfterLoginPath={setAfterLoginPath} />} {...props} {...state} />
-                  <Route name="verify-email" path="/verify-email/:token" component={VerifyEmail} />
-                  <Route name="recover-password" path="/recover-password" component={RecoverPassword} />
-                  <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
-                  <Route name="terms" path="/terms" component={Terms} />
-                  <Route name="privacy" path="/privacy" component={Privacy} />
-                  <Route name="examplePage" path="/example-page" component={ExamplePage} />
-                  <Route component={NotFound} />
+                  <Public name="verify-email" path="/verify-email/:token" component={VerifyEmail} {...props} />
+                  <Public name="recover-password" path="/recover-password" component={RecoverPassword} {...props} />
+                  <Public name="reset-password" path="/reset-password/:token" component={ResetPassword} {...props} />
+                  <Public name="terms" path="/terms" component={Terms} />
+                  <Public name="privacy" path="/privacy" component={Privacy} />
+                  <Public name="examplePage" path="/example-page" component={ExamplePage} />
+                  <Public component={NotFound} />
                 </Switch>
               </main>
 							<Footer />

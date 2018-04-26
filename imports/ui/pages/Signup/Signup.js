@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { Bert } from 'meteor/themeteorchef:bert';
 import OAuthLoginButtons from '../../components/OAuthLoginButtons/OAuthLoginButtons';
 import InputHint from '../../components/InputHint/InputHint';
 import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
@@ -12,6 +11,7 @@ import validate from '../../../modules/validate';
 import { Button, ButtonIcon } from 'rmwc/Button';
 import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
 import { GridInner, GridCell } from 'rmwc/Grid';
+import { Snackbar } from 'rmwc/Snackbar';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -73,10 +73,10 @@ class Signup extends React.Component {
       },
     }, (error) => {
       if (error) {
-        Bert.alert(error.reason, 'danger');
+        this.props.onAlert(error.reason, 'danger');
       } else {
         Meteor.call('users.sendVerificationEmail');
-        Bert.alert('Welcome!', 'success');
+        this.props.onAlert('Welcome!', 'success');
         history.push('/documents');
       }
     });
@@ -93,6 +93,7 @@ class Signup extends React.Component {
               offset: 97,
               text: 'Sign Up with an Email Address',
             }}
+            onAlert={this.props.onAlert}
           />
             <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
               <GridInner>

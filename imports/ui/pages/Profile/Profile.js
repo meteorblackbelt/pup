@@ -8,7 +8,6 @@ import base64ToBlob from 'b64-to-blob';
 import _ from 'lodash';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { Bert } from 'meteor/themeteorchef:bert';
 import { withTracker } from 'meteor/react-meteor-data';
 import InputHint from '../../components/InputHint/InputHint';
 import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
@@ -86,7 +85,7 @@ class Profile extends React.Component {
     event.preventDefault();
     Meteor.call('users.exportData', (error, exportData) => {
       if (error) {
-        Bert.alert(error.reason, 'danger');
+        this.props.onAlert(error.reason, 'danger');
       } else {
         FileSaver.saveAs(base64ToBlob(exportData), `${Meteor.userId()}.zip`);
       }
@@ -97,9 +96,9 @@ class Profile extends React.Component {
     if (confirm('Are you sure? This will permanently delete your account and all of its data.')) {
       Meteor.call('users.deleteAccount', (error) => {
         if (error) {
-          Bert.alert(error.reason, 'danger');
+          this.props.onAlert(error.reason, 'danger');
         } else {
-          Bert.alert('Account deleted!', 'success');
+          this.props.onAlert('Account deleted!', 'success');
         }
       });
     }
@@ -118,16 +117,16 @@ class Profile extends React.Component {
 
     Meteor.call('users.editProfile', profile, (error) => {
       if (error) {
-        Bert.alert(error.reason, 'danger');
+        this.props.onAlert(error.reason, 'danger');
       } else {
-        Bert.alert('Profile updated!', 'success');
+        this.props.onAlert('Profile updated!', 'success');
       }
     });
 
     if (form.newPassword.value) {
       Accounts.changePassword(form.currentPassword.value, form.newPassword.value, (error) => {
         if (error) {
-          Bert.alert(error.reason, 'danger');
+          this.props.onAlert(error.reason, 'danger');
         } else {
           form.currentPassword.value = '';
           form.newPassword.value = '';

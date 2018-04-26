@@ -9,11 +9,9 @@ const Public = ({
     path={path}
     exact={exact}
     render={props => (
-      !authenticated ?
-        (React.createElement(component, {
-          ...props, ...rest, loggingIn, authenticated,
-        })) :
-        (<Redirect to={afterLoginPath || '/documents'} />)
+      React.createElement(component, {
+        ...props, ...rest
+      })
     )}
   />
 );
@@ -21,14 +19,10 @@ const Public = ({
 Public.defaultProps = {
   path: '',
   exact: false,
-  afterLoginPath: null,
 };
 
 Public.propTypes = {
-  loggingIn: PropTypes.bool.isRequired,
-  authenticated: PropTypes.bool.isRequired,
   component: PropTypes.func.isRequired,
-  afterLoginPath: PropTypes.string,
   path: PropTypes.string,
   exact: PropTypes.bool,
 };

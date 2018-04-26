@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Button } from 'rmwc/Button';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { Bert } from 'meteor/themeteorchef:bert';
 import Documents from '../../../api/Documents/Documents';
 import NotFound from '../NotFound/NotFound';
 import Loading from '../../components/Loading/Loading';
@@ -12,9 +11,9 @@ const handleRemove = (documentId, history) => {
   if (confirm('Are you sure? This is permanent!')) {
     Meteor.call('documents.remove', documentId, (error) => {
       if (error) {
-        Bert.alert(error.reason, 'danger');
+        this.props.onAlert(error.reason, 'danger');
       } else {
-        Bert.alert('Document deleted!', 'success');
+        this.props.onAlert('Document deleted!', 'success');
         history.push('/documents');
       }
     });

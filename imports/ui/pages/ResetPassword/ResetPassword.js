@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
 import { Accounts } from 'meteor/accounts-base';
 import Alert from '../../components/Alert/Alert';
-import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
 import { Button, ButtonIcon } from 'rmwc/Button';
 import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
@@ -51,7 +50,7 @@ class ResetPassword extends React.Component {
 
     Accounts.resetPassword(token, form.newPassword.value, (error) => {
       if (error) {
-        Bert.alert(error.reason, 'danger');
+        this.props.onAlert(error.reason, 'danger');
       } else {
         history.push('/documents');
       }

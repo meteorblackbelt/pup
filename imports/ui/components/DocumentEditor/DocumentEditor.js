@@ -3,7 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
 import { Button, ButtonIcon } from 'rmwc/Button';
 import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
@@ -45,11 +44,11 @@ class DocumentEditor extends React.Component {
 
     Meteor.call(methodToCall, doc, (error, documentId) => {
       if (error) {
-        Bert.alert(error.reason, 'danger');
+        this.props.onAlert(error.reason, 'danger');
       } else {
         const confirmation = existingDocument ? 'Document updated!' : 'Document added!';
         this.form.reset();
-        Bert.alert(confirmation, 'success');
+        this.props.onAlert(confirmation, 'success');
         history.push(`/documents/${documentId}`);
       }
     });

@@ -3,7 +3,6 @@ import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Bert } from 'meteor/themeteorchef:bert';
 import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
 import validate from '../../../modules/validate';
 import Alert from '../../components/Alert/Alert';
@@ -16,6 +15,7 @@ class RecoverPassword extends React.Component {
   constructor(props) {
     super(props);
     autoBind(this);
+    console.log(props);
   }
 
   componentDidMount() {
@@ -44,9 +44,9 @@ class RecoverPassword extends React.Component {
 
     Accounts.forgotPassword({ email }, (error) => {
       if (error) {
-        Bert.alert(error.reason, 'danger');
+        this.props.onAlert(error.reason, 'danger');
       } else {
-        Bert.alert(`Check ${email} for a reset link!`, 'success');
+        this.props.onAlert(`Check ${email} for a reset link!`, 'success');
         history.push('/login');
       }
     });
