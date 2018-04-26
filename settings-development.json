@@ -1,5 +1,7 @@
 {
-  "public": {},
+  "public": {
+    "AppName": "Pup"
+  },
   "private": {
     "MAIL_URL": "",
     "OAuth": {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { withRouter } from 'react-router-dom';
 import { Button, ButtonIcon } from 'rmwc/Button';
 import { Grid, GridCell } from 'rmwc/Grid';
@@ -21,7 +22,7 @@ const Index = ({name, history}) => (
       src="https://s3-us-west-2.amazonaws.com/cleverbeagle-assets/graphics/email-icon.png"
       alt="Clever Beagle"
     />
-    <h1>Pup</h1>
+    <h1>{Meteor.settings.public.AppName}</h1>
     <p>A boilerplate for products.</p>
     <div className="horizontal-buttons">
       <Button theme="secondary-bg text-secondary-on-background" onClick={() => window.open("http://cleverbeagle.com/pup", "_blank")} raised>Read the Docs</Button>

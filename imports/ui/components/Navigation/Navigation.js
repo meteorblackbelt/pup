@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Navbar } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
@@ -49,7 +50,7 @@ class Navigation extends React.Component {
             onClick={() => this.setState({drawerOpen: !this.state.drawerOpen}) }
             />
             <ToolbarTitle>
-              <Link to="/">Pup</Link>
+              <Link to="/">{Meteor.settings.public.AppName}</Link>
             </ToolbarTitle>
           </ToolbarSection>
           <ToolbarSection alignEnd>
