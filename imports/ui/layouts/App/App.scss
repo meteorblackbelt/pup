@@ -1,38 +1,42 @@
 @import '../../stylesheets/colors';
 
-.App > .container {
-  margin-top: 5em;
-  margin-bottom: 20px;
-}
+.App {
+  font-family: 'Roboto';
 
-.App .verify-email {
-  margin-bottom: 0;
-  padding: 0;
-  border-top: none;
-  border-bottom: 1px solid #e7e7e7;
-  background: #fff;
-  color: $gray-dark;
-  border-radius: 0;
-
-  p {
-    padding: 19px;
+  & > .container {
+    margin-top: 5em;
+    margin-bottom: 20px;
   }
 
-  .btn {
+  .App .verify-email {
+    margin-bottom: 0;
     padding: 0;
-  }
-}
+    border-top: none;
+    border-bottom: 1px solid #e7e7e7;
+    background: #fff;
+    color: $gray-dark;
+    border-radius: 0;
 
-.App main {
-  @media (min-width: 840px) {
-    padding: var(--mdc-layout-grid-margin-desktop, 16px);
+    p {
+      padding: 19px;
+    }
+
+    .btn {
+      padding: 0;
+    }
   }
 
-  @media (min-width: 480px) and (max-width: 839px) {
-    padding: var(--mdc-layout-grid-margin-tablet, 16px);
-  }
+  main {
+    @media (min-width: 840px) {
+      padding: var(--mdc-layout-grid-margin-desktop, 16px);
+    }
 
-  @media (max-width: 479px) {
-    padding: var(--mdc-layout-grid-margin-phone, 16px);
+    @media (min-width: 480px) and (max-width: 839px) {
+      padding: var(--mdc-layout-grid-margin-tablet, 16px);
+    }
+
+    @media (max-width: 479px) {
+      padding: var(--mdc-layout-grid-margin-phone, 16px);
+    }
   }
 }

@@ -9,6 +9,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import DocumentsCollection from '../../../api/Documents/Documents';
 import { timeago, monthDayYearAtTime } from '../../../modules/dates';
 import Loading from '../../components/Loading/Loading';
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 
 import './Documents.scss';
 
@@ -33,25 +34,25 @@ const Documents = ({
       <Button raised onClick={() => history.push(`${match.url}/new`)}>Add Document</Button>
     </div>
     {documents.length ?
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Last Updated</th>
-            <th>Created</th>
-            <th />
-            <th />
-          </tr>
-        </thead>
-        <tbody>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Title</Th>
+            <Th>Last Updated</Th>
+            <Th>Created</Th>
+            <Th />
+            <Th />
+          </Tr>
+        </Thead>
+        <Tbody>
           {documents.map(({
             _id, title, createdAt, updatedAt,
           }) => (
-            <tr key={_id}>
-              <td>{title}</td>
-              <td>{timeago(updatedAt)}</td>
-              <td>{monthDayYearAtTime(createdAt)}</td>
-              <td>
+            <Tr key={_id}>
+              <Td>{title}</Td>
+              <Td>{timeago(updatedAt)}</Td>
+              <Td>{monthDayYearAtTime(createdAt)}</Td>
+              <Td>
                 <Button
                   raised
                   theme="secondary-bg text-secondary-on-background"
@@ -59,8 +60,8 @@ const Documents = ({
                 >
                   View
                 </Button>
-              </td>
-              <td>
+              </Td>
+              <Td>
                 <Button
                   raised
                   theme="secondary-bg text-secondary-on-background"
@@ -68,11 +69,11 @@ const Documents = ({
                 >
                   Delete
                 </Button>
-              </td>
-            </tr>
+              </Td>
+            </Tr>
           ))}
-        </tbody>
-      </table> : <Alert type="info">No documents yet!</Alert>}
+        </Tbody>
+      </Table> : <Alert type="info">No documents yet!</Alert>}
   </div>
 ) : <Loading />);
 

@@ -33,6 +33,7 @@ form {
 table {
   width: 100%;
   border: 2px solid $gray-lighter;
+  border-collapse: collapse;
 
   thead {
     border-bottom: 2px solid $gray-lighter;
@@ -40,5 +41,20 @@ table {
 
   th, td {
     padding: 0.5em;
+  }
+
+  @media screen and (max-width: 40em) {
+    &.responsiveTable {
+      border: none;
+
+      thead {
+        border: none;
+      }
+
+      tbody tr {
+        border: 1px solid $gray-lighter;
+        padding: .25em;
+      }
+    }
   }
 }

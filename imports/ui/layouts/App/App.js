@@ -33,6 +33,7 @@ import getUserName from '../../../modules/get-user-name';
 
 import './App.scss';
 import 'material-components-web/dist/material-components-web.min.css';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 
 class App extends React.Component {
   constructor(props) {
