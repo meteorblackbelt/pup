@@ -1,7 +1,13 @@
 @import './mixins';
+@import './colors';
 
 .page-header {
   margin-top: 0;
+  display: flex;
+
+  h1,h2,h3,h4,h5,h6 {
+    flex-grow: 1;
+  }
 }
 
 @include breakpoint(tablet) {
@@ -21,5 +27,18 @@ form {
         margin: 0.5em 0;
       }
     }
+  }
+}
+
+table {
+  width: 100%;
+  border: 2px solid $gray-lighter;
+
+  thead {
+    border-bottom: 2px solid $gray-lighter;
+  }
+
+  th, td {
+    padding: 0.5em;
   }
 }

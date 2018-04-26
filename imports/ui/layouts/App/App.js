@@ -52,15 +52,15 @@ class App extends React.Component {
 				<Router>
 					{!props.loading ? (
 						<div className="App">
-							{props.authenticated ?
-								<VerifyEmailAlert
-									userId={props.userId}
-									emailVerified={props.emailVerified}
-									emailAddress={props.emailAddress}
-								/>
-								: ''}
 							<Navigation {...props} {...state} />
               <main>
+                {props.authenticated ?
+                  <VerifyEmailAlert
+                    userId={props.userId}
+                    emailVerified={props.emailVerified}
+                    emailAddress={props.emailAddress}
+                  />
+                  : ''}
                 <Switch>
                   <Route exact name="index" path="/" component={Index} />
                   <Authenticated exact path="/documents" component={Documents} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />

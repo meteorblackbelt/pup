@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Alert from '../../components/Alert/Alert';
-import { Table, Button } from 'react-bootstrap';
+import { Button } from 'rmwc/Button';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
@@ -30,10 +30,10 @@ const Documents = ({
   <div className="Documents">
     <div className="page-header clearfix">
       <h4 className="pull-left">Documents</h4>
-      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Document</Link>
+      <Button raised onClick={() => history.push(`${match.url}/new`)}>Add Document</Button>
     </div>
     {documents.length ?
-      <Table responsive>
+      <table>
         <thead>
           <tr>
             <th>Title</th>
@@ -53,18 +53,18 @@ const Documents = ({
               <td>{monthDayYearAtTime(createdAt)}</td>
               <td>
                 <Button
-                  bsStyle="primary"
+                  raised
+                  theme="secondary-bg text-secondary-on-background"
                   onClick={() => history.push(`${match.url}/${_id}`)}
-                  block
                 >
                   View
                 </Button>
               </td>
               <td>
                 <Button
-                  bsStyle="danger"
+                  raised
+                  theme="secondary-bg text-secondary-on-background"
                   onClick={() => handleRemove(_id)}
-                  block
                 >
                   Delete
                 </Button>
@@ -72,7 +72,7 @@ const Documents = ({
             </tr>
           ))}
         </tbody>
-      </Table> : <Alert type="info">No documents yet!</Alert>}
+      </table> : <Alert type="info">No documents yet!</Alert>}
   </div>
 ) : <Loading />);
 

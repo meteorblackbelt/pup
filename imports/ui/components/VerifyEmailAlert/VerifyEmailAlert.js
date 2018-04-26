@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Alert from '../Alert/Alert';
-import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 
@@ -22,13 +22,13 @@ const VerifyEmailAlert = ({ userId, emailVerified, emailAddress }) => (
     <div className="VerifyEmailAlert">
       <Alert className="verify-email text-center">
         <p>Hey friend! Can you <strong>verify your email address</strong> ({emailAddress}) for us?
-          <Button
-            bsStyle="link"
+          {' '}
+          <Link
             onClick={() => handleResendVerificationEmail(emailAddress)}
-            href="#"
+            to="#"
           >
             Re-send verification email
-          </Button>
+          </Link>
         </p>
       </Alert>
     </div>
