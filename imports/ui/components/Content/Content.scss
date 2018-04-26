@@ -3,7 +3,6 @@
 .Content {
   max-width: 700px;
   margin: 0 auto;
-  font-size: 14px;
   line-height: 22px;
 
   h1,
@@ -30,7 +29,6 @@
 
 @include breakpoint(tablet) {
   .Content {
-    font-size: 16px;
     line-height: 22px;
   }
 }

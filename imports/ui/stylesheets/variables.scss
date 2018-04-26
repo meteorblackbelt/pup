@@ -1,0 +1,13 @@
+@import './colors';
+
+:root {
+	--mdc-theme-primary: $primary;
+	--mdc-theme-background: $primary;
+  --mdc-text-primary-on-background: $white;
+	--mdc-theme-secondary: $gray-lighter;
+  --mdc-theme-text-secondary-on-background: $gray-dark;
+
+  --mdc-layout-grid-margin-phone: 16px;
+  --mdc-layout-grid-margin-tablet: 16px;
+  --mdc-layout-grid-margin-desktop: 16px;
+}

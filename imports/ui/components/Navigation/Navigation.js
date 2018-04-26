@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
-import { Navbar } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import PublicNavigation from '../PublicNavigation/PublicNavigation';
 import AuthenticatedNavigation from '../AuthenticatedNavigation/AuthenticatedNavigation';
@@ -61,6 +60,7 @@ class Navigation extends React.Component {
                 />
 
                 <Menu
+                  theme="secondary-bg"
                   open={this.state.menuOpen}
                   onClick={() => this.setState({menuOpen: !this.state.menuOpen}) }
                   anchorCorner="topRight"

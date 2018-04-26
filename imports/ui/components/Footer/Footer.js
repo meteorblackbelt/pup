@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
-import { Grid, GridCell } from 'rmwc/Grid';
 import { year } from '../../../modules/dates';
 
 import './Footer.scss';

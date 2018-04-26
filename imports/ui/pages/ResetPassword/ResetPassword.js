@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
 import { Accounts } from 'meteor/accounts-base';
+import Alert from '../../components/Alert/Alert';
 import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
 import { Button, ButtonIcon } from 'rmwc/Button';
 import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
-import { Grid, GridCell } from 'rmwc/Grid';
+import { GridInner, GridCell } from 'rmwc/Grid';
 import { Card } from 'rmwc/Card';
 
 class ResetPassword extends React.Component {
@@ -59,12 +60,12 @@ class ResetPassword extends React.Component {
 
   render() {
     return (
-      <Grid className="ResetPassword">
+      <GridInner className="ResetPassword">
         <GridCell span="6">
           <h4 className="page-header">Reset Password</h4>
-          <Card className="Alert">
+          <Alert type="info">
             To reset your password, enter a new one below. You will be logged in with your new password.
-          </Card>
+          </Alert>
           <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
             <TextField type="password" name="newPassword" fullwidth label="New Password" />
 
@@ -73,7 +74,7 @@ class ResetPassword extends React.Component {
             <Button raised type="submit">Reset Password &amp; Login</Button>
           </form>
         </GridCell>
-      </Grid>
+      </GridInner>
     );
   }
 }

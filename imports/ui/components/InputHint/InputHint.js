@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TextFieldHelperText } from 'rmwc/TextField';
 
 import './InputHint.scss';
 
 const InputHint = ({ children }) => (
-  <div className="InputHint">
+  <TextFieldHelperText className="InputHint">
     {children}
-  </div>
+  </TextFieldHelperText>
 );
 
 InputHint.propTypes = {

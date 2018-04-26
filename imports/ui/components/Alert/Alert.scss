@@ -1,0 +1,27 @@
+@import '../../stylesheets/colors';
+
+.mdc-card {
+  &.Alert {
+    padding: 1em;
+
+    &.primary {
+      background-color: lighten($primary, 35%);;
+    }
+
+    &.success {
+      background-color: lighten($success, 35%);;
+    }
+
+    &.info {
+      background-color: lighten($info, 35%);;
+    }
+
+    &.warning {
+      background-color: lighten($warning, 35%);;
+    }
+
+    &.danger {
+      background-color: lighten($danger, 35%);;
+    }
+  }
+}

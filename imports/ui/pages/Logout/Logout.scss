@@ -1,57 +1,57 @@
 @import '../../stylesheets/mixins';
 @import '../../stylesheets/colors';
 
-.Logout {
-  padding: 20px;
-  background: $cb-blue;
-  text-align: center;
-  border-radius: 3px;
-  color: #fff;
+:root {
+  .Logout {
+    text-align: center;
+    border-radius: 3px;
+    color: #fff;
 
-  img {
-    width: 100px;
-    height: auto;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  p {
-    font-size: 18px;
-    color: lighten($cb-blue, 25%);
-  }
-
-  ul {
-    list-style: none;
-    display: inline-block;
-    padding: 0;
-    margin: 10px 0 0;
-  }
-
-  ul li {
-    float: left;
-    font-size: 28px;
-    line-height: 28px;
-
-    a {
-      color: #fff;
+    .mdc-card {
+      padding: 2rem;
     }
 
-    &:not(:last-child) {
-      margin-right: 15px;
+    div.horizontal-buttons {
+      display: flex;
+      justify-content: space-around;
     }
-  }
-}
 
-@include breakpoint(tablet) {
-  .Logout {
-    padding: 30px;
-  }
-}
+    img {
+      width: 100px;
+      height: auto;
+      margin: 0 auto;
+    }
 
-@include breakpoint(desktop) {
-  .Logout {
-    padding: 40px;
+    footer {
+      margin: 20px 0 0;
+      border-top: 1px solid darken($primary, 10%);
+      padding: 20px 20px 0;
+
+      p a {
+        color: lighten($primary, 35%);
+        text-decoration: underline;
+      }
+
+      ul {
+        list-style: none;
+        display: inline-block;
+        padding: 0;
+        margin: 10px 0 0;
+      }
+
+      ul li {
+        float: left;
+        font-size: 28px;
+        line-height: 28px;
+
+        a {
+          color: #fff;
+        }
+
+        &:not(:last-child) {
+          margin-right: 15px;
+        }
+      }
+    }
   }
 }

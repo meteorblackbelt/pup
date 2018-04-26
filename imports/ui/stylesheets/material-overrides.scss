@@ -10,21 +10,16 @@
   }
 }
 
-.mdc-card {
-  &.Alert {
-    padding: 1em;
-    background-color: #d9edf7;
-  }
-}
-
 .mdc-text-field--textarea .mdc-floating-label {
   background: transparent;
 }
 
 form {
-  [class^='mdc-'], & > [class*=' mdc-'] {
-    &:not(.upgrade-specificity) {
-      margin: 0.5em 0;
+  [class^='mdc-'], [class*=' mdc'] {
+    &[class*='-field-'] , &[class*='-button-'] {
+      &:not(.upgrade-specificity) {
+        margin: 0.5em 0;
+      }
     }
   }
 }

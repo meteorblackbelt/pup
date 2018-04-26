@@ -8,7 +8,7 @@ import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFoo
 import validate from '../../../modules/validate';
 import { Button, ButtonIcon } from 'rmwc/Button';
 import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
-import { Grid, GridCell } from 'rmwc/Grid';
+import { GridInner, GridCell } from 'rmwc/Grid';
 
 class Login extends React.Component {
   constructor(props) {
@@ -54,7 +54,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <Grid className="Login">
+      <GridInner className="Login">
         <GridCell span="6">
             <h4 className="page-header">Log In</h4>
             <OAuthLoginButtons
@@ -78,7 +78,7 @@ class Login extends React.Component {
               <p>{'Don\'t have an account?'} <Link to="/signup">Sign Up</Link>.</p>
             </AccountPageFooter>
         </GridCell>
-      </Grid>
+      </GridInner>
     );
   }
 }

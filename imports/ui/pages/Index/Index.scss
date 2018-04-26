@@ -3,11 +3,13 @@
 
 :root {
   .Index {
-    padding: 20px;
-    background-color: $cb-blue;
     text-align: center;
     border-radius: 3px;
     color: #fff;
+
+    .mdc-card {
+      padding: 2rem;
+    }
 
     div.horizontal-buttons {
       display: flex;
@@ -21,40 +23,13 @@
     }
 
     footer {
-      margin: 20px -20px -20px;
-      border-top: 1px solid darken($cb-blue, 10%);
-      padding: 20px;
-
-      p {
-        font-size: 14px;
-        line-height: 22px;
-        color: lighten($cb-blue, 35%);
-        margin: 0;
-      }
+      margin: 20px 0 0;
+      border-top: 1px solid darken($primary, 10%);
+      padding: 20px 20px 0;
 
       p a {
-        color: lighten($cb-blue, 35%);
+        color: lighten($primary, 35%);
         text-decoration: underline;
-      }
-    }
-  }
-
-  @include breakpoint(tablet) {
-    .Index {
-      padding: 30px;
-
-      footer {
-        margin: 30px -30px -30px;
-      }
-    }
-  }
-
-  @include breakpoint(desktop) {
-    .Index {
-      padding: 40px;
-
-      footer {
-        margin: 40px -40px -40px;
       }
     }
   }

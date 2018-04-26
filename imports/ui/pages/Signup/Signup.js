@@ -1,6 +1,5 @@
 import React from 'react';
 import autoBind from 'react-autobind';
-import { Row, Col, FormGroup, ControlLabel } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
@@ -12,7 +11,7 @@ import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFoo
 import validate from '../../../modules/validate';
 import { Button, ButtonIcon } from 'rmwc/Button';
 import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
-import { Grid, GridInner, GridCell } from 'rmwc/Grid';
+import { GridInner, GridCell } from 'rmwc/Grid';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -85,7 +84,7 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <Grid className="Signup">
+      <GridInner className="Signup">
         <GridCell span="6">
           <h4 className="page-header">Sign Up</h4>
           <OAuthLoginButtons
@@ -109,7 +108,7 @@ class Signup extends React.Component {
               <TextField name="emailAddress" fullwidth label="Email Address" />
 
               <TextField name="password" type="password" fullwidth label="Password" />
-              <TextFieldHelperText>Use at least six characters.</TextFieldHelperText>
+              <InputHint>Use at least six characters.</InputHint>
 
               <Button raised type="submit">Sign Up</Button>
             </form>
@@ -118,7 +117,7 @@ class Signup extends React.Component {
               <p>Already have an account? <Link to="/login">Log In</Link>.</p>
             </AccountPageFooter>
         </GridCell>
-      </Grid>
+      </GridInner>
     );
   }
 }

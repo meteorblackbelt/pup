@@ -15,7 +15,7 @@ import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFoo
 import validate from '../../../modules/validate';
 import { Button, ButtonIcon } from 'rmwc/Button';
 import { TextField, TextFieldIcon, TextFieldHelperText } from 'rmwc/TextField';
-import { Grid, GridInner, GridCell } from 'rmwc/Grid';
+import { GridInner, GridCell } from 'rmwc/Grid';
 
 import './Profile.scss';
 
@@ -195,7 +195,7 @@ class Profile extends React.Component {
   render() {
     const { loading, user } = this.props;
     return (
-      <Grid className="Profile">
+      <GridInner className="Profile">
         <GridCell span="6">
           <h4 className="page-header">Edit Profile</h4>
           <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
@@ -208,7 +208,7 @@ class Profile extends React.Component {
             <Button raised className="btn danger" onClick={this.handleDeleteAccount}>Delete My Account</Button>
           </AccountPageFooter>
         </GridCell>
-      </Grid>
+      </GridInner>
     );
   }
 }

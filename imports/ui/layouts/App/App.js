@@ -4,7 +4,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import autoBind from 'react-autobind';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Grid } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
@@ -61,26 +60,26 @@ class App extends React.Component {
 								/>
 								: ''}
 							<Navigation {...props} {...state} />
-							<Grid>
-								<Switch>
-									<Route exact name="index" path="/" component={Index} />
-									<Authenticated exact path="/documents" component={Documents} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-									<Authenticated exact path="/documents/new" component={NewDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-									<Authenticated exact path="/documents/:_id" component={ViewDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-									<Authenticated exact path="/documents/:_id/edit" component={EditDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-									<Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-									<Public path="/signup" component={Signup} {...props} {...state} />
-									<Public path="/login" component={Login} {...props} {...state} />
-									<Route path="/logout" render={routeProps => <Logout {...routeProps} setAfterLoginPath={setAfterLoginPath} />} {...props} {...state} />
-									<Route name="verify-email" path="/verify-email/:token" component={VerifyEmail} />
-									<Route name="recover-password" path="/recover-password" component={RecoverPassword} />
-									<Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
-									<Route name="terms" path="/terms" component={Terms} />
-									<Route name="privacy" path="/privacy" component={Privacy} />
-									<Route name="examplePage" path="/example-page" component={ExamplePage} />
-									<Route component={NotFound} />
-								</Switch>
-							</Grid>
+              <main>
+                <Switch>
+                  <Route exact name="index" path="/" component={Index} />
+                  <Authenticated exact path="/documents" component={Documents} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+                  <Authenticated exact path="/documents/new" component={NewDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+                  <Authenticated exact path="/documents/:_id" component={ViewDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+                  <Authenticated exact path="/documents/:_id/edit" component={EditDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+                  <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+                  <Public path="/signup" component={Signup} {...props} {...state} />
+                  <Public path="/login" component={Login} {...props} {...state} />
+                  <Route path="/logout" render={routeProps => <Logout {...routeProps} setAfterLoginPath={setAfterLoginPath} />} {...props} {...state} />
+                  <Route name="verify-email" path="/verify-email/:token" component={VerifyEmail} />
+                  <Route name="recover-password" path="/recover-password" component={RecoverPassword} />
+                  <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
+                  <Route name="terms" path="/terms" component={Terms} />
+                  <Route name="privacy" path="/privacy" component={Privacy} />
+                  <Route name="examplePage" path="/example-page" component={ExamplePage} />
+                  <Route component={NotFound} />
+                </Switch>
+              </main>
 							<Footer />
 						</div>
 					) : ''}

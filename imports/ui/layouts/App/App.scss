@@ -22,3 +22,17 @@
     padding: 0;
   }
 }
+
+.App main {
+  @media (min-width: 840px) {
+    padding: var(--mdc-layout-grid-margin-desktop, 16px);
+  }
+
+  @media (min-width: 480px) and (max-width: 839px) {
+    padding: var(--mdc-layout-grid-margin-tablet, 16px);
+  }
+
+  @media (max-width: 479px) {
+    padding: var(--mdc-layout-grid-margin-phone, 16px);
+  }
+}
