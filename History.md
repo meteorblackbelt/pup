@@ -3,7 +3,7 @@
 - Add [#103](https://github.com/cleverbeagle/pup/issues/103). i18n support with example language file (Spanish?)
 
 
-## v1.5.0, April 25th, 2018 (Unreleased)
+## v1.5.0, April 26th, 2018 (Unreleased)
 
 - Improve [#157](https://github.com/cleverbeagle/pup/issues/157). Bump Meteor to 1.6.1.1 and all dependencies to their latest compatible versions.
 - Add [#154](https://github.com/cleverbeagle/pup/issues/154). Add blank state component.
