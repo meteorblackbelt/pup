@@ -16,8 +16,41 @@
   }
 }
 
-.mdc-text-field--textarea .mdc-floating-label {
-  background: transparent;
+.mdc-snackbar {
+  z-index: 100;
+}
+
+.mdc-text-field {
+  & > input {
+    margin-top: 0.5rem;
+  }
+}
+
+.mdc-text-field--textarea {
+  display: flex;
+  flex-direction: column;
+  border-width: 1px;
+
+  &.mdc-text-field--focused {
+    border-width: 2px;
+  }
+
+  :root & {
+    border-color: $gray-lighter;
+  }
+
+  .mdc-floating-label {
+    background: transparent;
+  }
+
+  .mdc-line-ripple {
+    display: none;
+  }
+
+  & > textarea.mdc-text-field__input {
+    border: none;
+    resize: none;
+  }
 }
 
 form {

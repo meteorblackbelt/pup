@@ -22,10 +22,10 @@ class DocumentEditor extends React.Component {
       },
       messages: {
         title: {
-          required: 'Need a title in here, Seuss.',
+          required: 'Need a title in here.',
         },
         body: {
-          required: 'This thneeds a body, please.',
+          required: 'This needs a body, please.',
         },
       },
       submitHandler() { component.handleSubmit(component.form); },
@@ -62,13 +62,13 @@ class DocumentEditor extends React.Component {
         <TextField
           name="title"
           fullwidth
-          label="Oh, The Places You'll Go!"
+          label="Title"
           defaultValue={doc && doc.title}
         />
 
         <TextField
           name="body"
-          label="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
+          label="Body"
           textarea
           fullwidth
           rows="4"
