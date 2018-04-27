@@ -1,0 +1,5 @@
+@mixin full-height-body() {
+  html, body {
+    height: 100%;
+  }
+}
