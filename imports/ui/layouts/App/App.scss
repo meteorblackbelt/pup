@@ -2,6 +2,10 @@
 
 .App {
   font-family: 'Roboto';
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
   & > .container {
     margin-top: 5em;

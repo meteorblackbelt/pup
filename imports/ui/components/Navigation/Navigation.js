@@ -12,7 +12,6 @@ import {
   ToolbarTitle,
   ToolbarMenuIcon,
   ToolbarIcon,
-  ToolbarFixedAdjust
 } from 'rmwc/Toolbar';
 import {
   Menu,
@@ -74,7 +73,6 @@ class Navigation extends React.Component {
         </ToolbarRow>
         {!this.props.authenticated ? <PublicNavigation drawerOpen={this.state.drawerOpen} onClose={this.closeMenus.bind(this)} /> : <AuthenticatedNavigation drawerOpen={this.state.drawerOpen} onClose={this.closeMenus.bind(this)} {...this.props} />}
       </Toolbar>
-      <ToolbarFixedAdjust />
       </div>
     )
   }

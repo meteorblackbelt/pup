@@ -10,4 +10,14 @@
   --mdc-layout-grid-margin-phone: 16px;
   --mdc-layout-grid-margin-tablet: 16px;
   --mdc-layout-grid-margin-desktop: 16px;
+
+  --mdc-layout-grid-margin-desktop: 16px;
+
+  --navbar-height: 64px;
+  @media (max-width: 959px) and (orientation: landscape) {
+    --navbar-height: 48px;
+  }
+  @media (max-width: 599px) {
+    --navbar-height: 56px;
+  }
 }

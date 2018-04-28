@@ -1,3 +1,7 @@
+body {
+  margin-top: var(--navbar-height);
+}
+
 :root {
   .mdc-toolbar {
     &, & .mdc-toolbar__icon {
